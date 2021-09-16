@@ -1,6 +1,5 @@
 
 import unittest
-import calc
 
 def my_abs(a):
     if a <= 0:
@@ -31,10 +30,10 @@ def multiplication (e,f):
 """Fct which calculates the division of two numbers"""
 
 def division (g,h):
-	if h == 0:
-		break
-	else:
-    return g/h
+    if h == 0:
+        print( "no operation to perform")
+    else:
+        return g/h
 
 """fct which takes a name as a parameter and which returns 'Hello' + name"""
 
@@ -52,7 +51,7 @@ def impair (nombre):
 class TestAbs(unittest.TestCase):
     
     def test_my_abs(self):
-    	"""
+        """
         Check that my_app function is working correctly 
         """
         self.assertEqual(my_abs(5), 5)
@@ -65,32 +64,32 @@ class TestAbs(unittest.TestCase):
         # This assertion will launch an error
         #self.assertEqual(my_abs2(-5), 5)
 
-class testCalc(unittest.TestCase):
-	def test_somme(self):
-		result = calc.somme(2,5)
-
-        self.assertEqual(hello('Stephanie'), Stephanie)
-        self.assertEqual(result, 7)
-        self.assertEqual(calc.somme(-2,5), 3)
-        self.assertEqual(calc.somme(-2,-5), -7)
-
+class TestSomme(unittest.TestCase):
+    def test_somme(self):
+        
+        self.assertEqual(somme(2,5), 7)
+        self.assertEqual(somme(-2,5), 3)
+        self.assertEqual(somme(-2,-5), -7)
+        
+class TestSubstraction(unittest.TestCase):
     def test_substraction(self):
-
-        self.assertEqual(calc.substraction(2,7), -5)
-        self.assertEqual(calc.substraction(-2,7), -9)
-        self.assertEqual(calc.substraction(-2,-7), 5)
-
+        self.assertEqual(substraction(2,7), -5)
+        self.assertEqual(substraction(-2,7), -9)
+        self.assertEqual(substraction(-2,-7), 5)
+        
+class TestMultiplication(unittest.TestCase):
     def test_multiplication(self):
 
-        self.assertEqual(calc.multiplication(2,5), 10)
-        self.assertEqual(calc.smultiplication(-2,5), -10)
-        self.assertEqual(calc.multiplication(-2,-5), 10)
-
+        self.assertEqual(multiplication(2,5), 10)
+        self.assertEqual(multiplication(-2,5), -10)
+        self.assertEqual(multiplication(-2,-5), 10)
+        
+class TestDivision(unittest.TestCase):
     def test_division(self):
 
-        self.assertEqual(calc.division(2,2), 1)
-        self.assertEqual(calc.division(-2,2), -1)
-        self.assertEqual(calc.division(-2,-2), 1)
+        self.assertEqual(division(2,2), 1)
+        self.assertEqual(division(-2,2), -1)
+        self.assertEqual(division(-2,-2), 1)
         
 
 if __name__ == '__main__':
