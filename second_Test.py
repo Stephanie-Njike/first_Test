@@ -10,11 +10,16 @@ def mediane (a,b,c):
     else:
         median = b
     return median
+print(mediane(6,4,5))
+print(mediane(2,2,2))
+print(mediane(1,2,3))
+print(mediane(8,-3,11))
 
 
 
 # Solution 2
 def mediane1 (a,b,c):
+    ##a,b,c=3,2,4
     if a>=b and a<=c:
         median=a
     elif b>=a and b<=c:
@@ -22,6 +27,10 @@ def mediane1 (a,b,c):
     elif c>=a and c<=b:
         median=c
     return median
+print(mediane1(6,4,5))
+print(mediane1(2,2,2))
+print(mediane1(1,2,3))
+print(mediane1(8,-3,11))
 
 
 # Solution 3
@@ -32,8 +41,11 @@ def mediane2 (a,b,c):
     if b < c < a and a < c < b :
         median = c
     return median
-
-
+print(mediane2(6,4,5))
+print(mediane2(2,2,2))
+print(mediane2(1,2,3))
+print(mediane2(8,-3,11))
+'''
 class TestMediane(unittest.TestCase):
     def test_mediane(self):
         self.assertEqual(mediane(2,2,2), 2)
@@ -59,6 +71,6 @@ class TestMediane(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
+'''
 
 
