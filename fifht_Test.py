@@ -26,7 +26,7 @@ def plusGrandDiviseur(a):
         if a % i == 0:
             diviseurs.append(i)
     return diviseurs[-1]
-print(plusGrandDiviseur(990))
+print(plusGrandDiviseur(37))
 
 class TestSomme(unittest.TestCase):
     """
@@ -78,6 +78,22 @@ class TestPlusGrandDiviseur(unittest.TestCase):
         self.assertIsNone(plusGrandDiviseur(0),None)
         self.assertIsNone(plusGrandDiviseur(1),None)
 
+class TestPlusGrandDiviseur(unittest.TestCase):
+    def plusGrandDiviseur(self):
+        for _ in range(10):
+            a = random.randint(0,10)
+            if a ==0 or a == 1:
+                return None
+            diviseurs = []
+            for i in range (1, a):
+                if a % i == 0:
+                    diviseurs.append(i)
+        self.assertEqual(plusGrandDiviseur(a), diviseurs[-1],"Votre fonction appliquée à "+str(a)+
+                             " a retourné "+str(plusGrandDiviseur(a))+" et non "+
+                             str(diviseurs[-1])) 
+        
+        
+        
         
     
     
