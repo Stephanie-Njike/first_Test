@@ -1,4 +1,5 @@
 import unittest
+import math
 # Exo 1
 '''
 Ecrire le test unitaire d’une fonction qui retourne le cube de son argument
@@ -15,7 +16,7 @@ Ecrire  la  fonction  qui  calcule  le  volume  d’une  sphère  et  écrire  l
 correspondant
 '''
 def volumeSphere (r):
-    v = 4/3*pi*r*r
+    v = 4/3*math.pi*r*r
     return v
 
 # Exo 3
@@ -23,15 +24,19 @@ def volumeSphere (r):
 Ecrire le test d’une fonction qui calcule le pgcd de deux nombres.
 '''
 
-def pgcd(a):
-    if a == 0 or a == 1:
+def pgcd(a,b):
+    if a == 0 or b == 0:
         return None
+    if a < b:
+        minimum = a
+    else :
+        minimum = b
     diviseurs = []
-    for i in range ( 1, a):
-        if a % i == 0:
+    for i in range ( 1, minimum + 1):
+        if a % i == 0 and b % i == 0:
             diviseurs.append(i)
     return diviseurs[-1]
-print(pgcd(101))
+
 
 # Exo 4
 
@@ -86,6 +91,31 @@ class TestCube(unittest.TestCase):
         self.assertEqual(cube(0), (0))
         self.assertEqual(cube(2), (8))
         self.assertEqual(cube(-3), (-27))
+'''
+class TestVolumeSphere(unittest.TestCase):
+    def test_volumeSphere(self):
+        self.assertEqual(volumeSphere(0), (0))
+        self.assertEqual(volumeSphere(2), (16.75))
+        self.assertEqual(volumeSphere(-3), (37,69))
+'''
+class TestPgcd(unittest.TestCase):
+    def test_pgcd(self):
+        self.assertEqual(pgcd(12, 8), 4)
+        self.assertIsNone(pgcd(0, 1),None)
+        self.assertIsNone(pgcd(1, 0),None)
+
+class TestPgn(unittest.TestCase):
+    def test_pgn(self):
+        self.assertEqual(pgn(0,1,3), (3))
+        self.assertEqual(pgn(3,1,0), (3))
+        self.assertEqual(pgn(1,3,0), (3))
+
+class TestFusion(unittest.TestCase):
+    def test_fusion(self):
+        self.assertEqual(fusion([],[]), ([]))
+        self.assertEqual(fusion([3],[0]), ([3,0]))
+        self.assertEqual(fusion([1,3,0],[4,5,6]), ([1,3,0,4,5,6]))
+        self.assertEqual(fusion([1,1,1,1,1],[1,1,1,1,1]), ([1,1,1,1,1,1,1,1,1,1]))
 if __name__ == '__main__':
     unittest.main()
 
