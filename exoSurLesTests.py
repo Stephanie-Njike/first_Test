@@ -174,12 +174,19 @@ class TestVolumeSphere(unittest.TestCase):
         self.assertEqual(volumeSphere(2), ((4/3)*math.pi*2*2))
         self.assertEqual(volumeSphere(-3), ((4/3)*math.pi*-3*-3))
 '''
-'''
+
 class TestPgcd(unittest.TestCase):
     def test_pgcd(self):
         for x in range(200):
             a = random.randint(-50,200)
             b = random.randint(-50,200)
+            if a == 0 or b == 0:
+                self.assertIsNone(pgcd(0, 1),None)
+                self.assertIsNone(pgcd(1, 0),None)
+            if a < 0:
+                a = -a
+            if b < 0:
+                b = -b
             if a < b:
                 minimum = a
             else :
@@ -188,14 +195,13 @@ class TestPgcd(unittest.TestCase):
             for i in range(1, minimum + 1):
                 if a % i == 0 and b % i == 0:
                     divisors.append(i)
-            self.assertEqual(pgcd(a, b), divisors[-1])
-        self.assertEqual(pgcd(12, 8), 4)
-        self.assertIsNone(pgcd(0, 1),None)
-        self.assertIsNone(pgcd(1, 0),None)
-        self.assertEqual(pgcd(-12, -8), 4)
-        self.assertEqual(pgcd(-36, -8), 4)
-        self.assertEqual(pgcd(-36, 8), 4)
-'''
+                    self.assertEqual(pgcd(a, b), divisors[-1])
+        #self.assertEqual(pgcd(12, 8), 4)
+        
+        #self.assertEqual(pgcd(-12, -8), 4)
+        #self.assertEqual(pgcd(-36, -8), 4)
+        #self.assertEqual(pgcd(-36, 8), 4)
+
 class TestPgcd1(unittest.TestCase):
     def test_pgcd1(self):
         for y in range(200):
@@ -248,7 +254,7 @@ class TestPgcd2(unittest.TestCase):
             for l in range(1, minimum + 1):
                 if a % l == 0 and b % l == 0:
                     diviseurs.append(l)
-        self.assertEqual(pgcd(a, b), diviseurs[-1])
+            self.assertEqual(pgcd(a, b), diviseurs[-1])
 
 class TestPgcd3(unittest.TestCase):
     def test_pgcd3(self):
